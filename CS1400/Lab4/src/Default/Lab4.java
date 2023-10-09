@@ -18,6 +18,7 @@ public class Lab4 {
         String inputStr = "";
         char choice = ' ';
         int numSymbols = -1, sideWidth = -1, midWidth = -1;
+        boolean inverted = true;
 
         do {
             displayMenu();
@@ -42,8 +43,15 @@ public class Lab4 {
                 numSymbols = scanner.nextInt(); 
 
                 System.out.println();
-                System.out.print(buildPyramid(SIDE_SYMB, MID_SYMB, numSymbols));
+                System.out.print(buildPyramid(SIDE_SYMB, MID_SYMB, numSymbols, !inverted));
 
+                break;
+            case 'd':
+            	System.out.println("Number of symbols on the middle layer: ");
+                numSymbols = scanner.nextInt(); 
+
+                System.out.println();
+                System.out.print(buildPyramid(SIDE_SYMB, MID_SYMB, numSymbols, inverted));
                 break;
             case 'q':
                 System.out.println("Bye");
@@ -87,7 +95,6 @@ public class Lab4 {
         
         for(int i = 0; i < midWidth; i++) {
         	middle += midSymb;
-        	System.out.println(middle);
         }
        
         result = side + middle + side;
@@ -120,11 +127,11 @@ public class Lab4 {
      * @return            A String of the pyramid pattern.
      */
     private static String buildPyramid(
-        char sideSymb, char midSymb, int numSymbols) {
+        char sideSymb, char midSymb, int numSymbols, boolean inverted) {
 
         String result = "";
         int sideWidth = numSymbols/2;
-        int midWidth = numSymbols - 2 * sideWidth;
+        int midWidth = 1;
 
         // YOUR CODE HERE
         
@@ -135,14 +142,31 @@ public class Lab4 {
         
         if (numSymbols % 2 == 0) {
         	numSymbols -= 1;
+        	sideWidth -= 1;
         }
         
         // Make a loop to iterate the pyramid's levels
-        for (int i = 0; i < numSymbols/2; i++) {
-        	System.out.println(buildRow(sideSymb, sideWidth, midSymb, midWidth));
-        	sideWidth -= 1;
-        	midWidth += 2;
+        if (!inverted) {
+        	for (int i = 0; i < numSymbols/2+1; i++) {
+            	System.out.println(buildRow(sideSymb, sideWidth, midSymb, midWidth));
+            	sideWidth -= 1;
+            	midWidth += 2;
+            }
+        } else {
+        	for (int i = 0; i < numSymbols/2+1; i++) {
+            	System.out.println(buildRow('*', sideWidth, ' ', midWidth));
+            	sideWidth -= 1;
+            	midWidth += 2;
+            }
+        	sideWidth += 1;
+        	midWidth -= 2;
+        	for (int i = 0; i < numSymbols/2; i++) {
+        		sideWidth += 1;
+            	midWidth -= 2;
+            	System.out.println(buildRow('*', sideWidth, ' ', midWidth));
+            }
         }
+        
 
        return result;
   }
@@ -155,6 +179,7 @@ public class Lab4 {
         System.out.println("Please choose one pattern from the list");
         System.out.println("r) Row");
         System.out.println("p) Pyramid");
+        System.out.println("d) Shallow Pyramid");
         System.out.println("q) Quit");
     }  // End of displayMenu
 
