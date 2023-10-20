@@ -1,10 +1,9 @@
-package Default;
 /*-------------------------------------------------------------
 // AUTHOR: John Stewart
 // FILENAME: Lab4.java
 // SPECIFICATION: Prompts user to pick between pyramid, row, and inverted diamond, then it draws the chosen shape
 // FOR: CS 1400- Lab #4
-// TIME SPENT: 
+// TIME SPENT: 1:30 hrs
 //-----------------------------------------------------------*/
 
 import java.util.Scanner;
@@ -18,7 +17,6 @@ public class Lab4 {
         String inputStr = "";
         char choice = ' ';
         int numSymbols = -1, sideWidth = -1, midWidth = -1;
-        boolean inverted = true;
 
         do {
             displayMenu();
@@ -34,7 +32,6 @@ public class Lab4 {
                 System.out.println("Width of the middle: ");
                 midWidth = scanner.nextInt();
 
-                System.out.println();
                 System.out.print(buildRow(SIDE_SYMB, sideWidth, MID_SYMB, midWidth));
 
                 break;
@@ -43,7 +40,7 @@ public class Lab4 {
                 numSymbols = scanner.nextInt(); 
 
                 System.out.println();
-                System.out.print(buildPyramid(SIDE_SYMB, MID_SYMB, numSymbols, !inverted));
+                System.out.print(buildPyramid(SIDE_SYMB, MID_SYMB, numSymbols));
 
                 break;
             case 'd':
@@ -51,7 +48,7 @@ public class Lab4 {
                 numSymbols = scanner.nextInt(); 
 
                 System.out.println();
-                System.out.print(buildPyramid(SIDE_SYMB, MID_SYMB, numSymbols, inverted));
+                System.out.print(buildDiamond(SIDE_SYMB, MID_SYMB, numSymbols));
                 break;
             case 'q':
                 System.out.println("Bye");
@@ -82,7 +79,7 @@ public class Lab4 {
      * @param midWidth  Number of symbols in the middle
      * @return          A String of a row of the designed pattern end with \n
      */
-    private static String buildRow(
+    public static String buildRow(
         char sideSymb, int sideWidth, char midSymb, int midWidth) {
 
         String result = "";
@@ -97,7 +94,7 @@ public class Lab4 {
         	middle += midSymb;
         }
        
-        result = side + middle + side;
+        result = side + middle + side + "\n";
 
         return result;
     }  // End of buildRow
@@ -126,8 +123,8 @@ public class Lab4 {
      * @param  numSymbols The number of symbols on the lowest layer
      * @return            A String of the pyramid pattern.
      */
-    private static String buildPyramid(
-        char sideSymb, char midSymb, int numSymbols, boolean inverted) {
+    public static String buildPyramid(
+        char sideSymb, char midSymb, int numSymbols) {
 
         String result = "";
         int sideWidth = numSymbols/2;
@@ -135,26 +132,37 @@ public class Lab4 {
 
         // YOUR CODE HERE
         
-        if (numSymbols == 0) {
-        	return result;
-        }
-        
-        
         if (numSymbols % 2 == 0) {
         	numSymbols -= 1;
         	sideWidth -= 1;
         }
         
         // Make a loop to iterate the pyramid's levels
-        if (!inverted) {
-        	for (int i = 0; i < numSymbols/2+1; i++) {
-            	System.out.println(buildRow(sideSymb, sideWidth, midSymb, midWidth));
+    	for (int i = 0; i < numSymbols/2+1; i++) {
+    		result += buildRow(sideSymb, sideWidth, midSymb, midWidth);
+        	sideWidth -= 1;
+        	midWidth += 2;
+        }
+        
+       return result;
+  }
+    public static String buildDiamond(
+            char sideSymb, char midSymb, int numSymbols) {
+
+            String result = "";
+            int sideWidth = numSymbols/2;
+            int midWidth = 1;
+
+            // YOUR CODE HERE
+            
+            if (numSymbols % 2 == 0) {
+            	numSymbols -= 1;
             	sideWidth -= 1;
-            	midWidth += 2;
             }
-        } else {
+            
+            // Make a loop to iterate the pyramid's levels
         	for (int i = 0; i < numSymbols/2+1; i++) {
-            	System.out.println(buildRow('*', sideWidth, ' ', midWidth));
+        		result += buildRow('-', sideWidth, '*', midWidth);
             	sideWidth -= 1;
             	midWidth += 2;
             }
@@ -163,19 +171,18 @@ public class Lab4 {
         	for (int i = 0; i < numSymbols/2; i++) {
         		sideWidth += 1;
             	midWidth -= 2;
-            	System.out.println(buildRow('*', sideWidth, ' ', midWidth));
+            	result += buildRow('-', sideWidth, '*', midWidth);
             }
-        }
-        
-
-       return result;
-  }
-
+            
+            
+        	
+            return result;
+      }
     
     /**
      * Display the menu
      */
-    private static void displayMenu() {
+    public static void displayMenu() {
         System.out.println("Please choose one pattern from the list");
         System.out.println("r) Row");
         System.out.println("p) Pyramid");
