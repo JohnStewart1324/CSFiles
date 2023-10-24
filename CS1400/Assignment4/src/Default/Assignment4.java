@@ -1,10 +1,10 @@
 package Default;
 /*
-//AUTHOR: YOUR NAME
-//FILENAME: TITLE OF THIS SOURCE FILE
+//AUTHOR: John Stewart
+//FILENAME: Assignment4.java
 //SPECIFICATION: DESCRIPTION OF THIS PROGRAM
 //FOR: CS 1400 - ASSIGNMENT #4
-//TIME SPENT: HOW LONG IT TOOK YOU TO FINISH THIS ASSIGNMENT
+//TIME SPENT: 2 hrs
 //*/
 
 import java.util.Scanner;
@@ -69,7 +69,7 @@ public class Assignment4 {
 	}
 	public static int minNum(int inputList[]) {
 		int smallestNum = inputList[0];
-		for (int j = 1; j < inputList.length-2; j++) {
+		for (int j = 1; j < inputList.length; j++) {
 			if (inputList[j] < smallestNum) {
 				smallestNum = inputList[j];
 			}
