@@ -24,7 +24,7 @@ public class Geek {
 		return concatString;
 	}
 	
-	boolean isEven(int num) {
+	public boolean isEven(int num) {
 		numberOfQuestions++;
 		return num%2 == 0;
 	}
@@ -63,7 +63,7 @@ public class Geek {
 		return numString.length();
 	}
 	
-	boolean isPrime(int num) {
+	public boolean isPrime(int num) {
 		if (num == 1) {
 			numberOfQuestions++;
 			return false;
