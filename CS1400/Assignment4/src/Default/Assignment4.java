@@ -14,7 +14,9 @@ public class Assignment4 {
 		Scanner scan = new Scanner(System.in);
 		int userInput = 100, count = 0;
 		int inputList[] = new int[userInput];
-		
+		int min = Integer.MAX_VALUE;
+		int max = Integer.MIN_VALUE;
+		int sum = 0;
 		do {
 			System.out.println("Enter a positive integer. Enter -1 to quit.");
 			userInput = scan.nextInt();
@@ -29,10 +31,17 @@ public class Assignment4 {
 			} else {
 				System.out.println("The number " + userInput + " is not a prime number.\n");
 			}
+			if (min > userInput) {
+				min = userInput;
+			}
+			if (max < userInput) {
+				max = userInput;
+			}
 			count++;
+			sum+=userInput;
 		} while (userInput != -1);
 		
-		System.out.println("\nThe maximum positive number is: " + maxNum(inputList));
+		System.out.println("\nThe maximum positive number is: " + maxNum(inputList, count));
 		System.out.println("The minimum positive number is: " + minNum(inputList));
 		System.out.println("The sum is: " + findSum(inputList));
 		System.out.println("The count of number(s) is: " + count);
@@ -58,9 +67,9 @@ public class Assignment4 {
 		
 		return true;
 	}
-	public static int maxNum(int inputList[]) {
+	public static int maxNum(int inputList[], int count) {
 		int largestNum = inputList[0];
-		for (int i = 0; i < inputList.length; i++) {
+		for (int i = 0; i < count; i++) {
 			if (largestNum < inputList[i]) {
 				largestNum = inputList[i];
 			}
@@ -70,7 +79,7 @@ public class Assignment4 {
 	public static int minNum(int inputList[]) {
 		int smallestNum = inputList[0];
 		for (int j = 1; j < inputList.length; j++) {
-			if (inputList[j] < smallestNum) {
+			if (smallestNum > inputList[j]) {
 				smallestNum = inputList[j];
 			}
 		}
