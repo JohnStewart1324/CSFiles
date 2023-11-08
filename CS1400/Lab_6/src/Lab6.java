@@ -1,9 +1,9 @@
 /*-------------------------------------------------------------------------
 // AUTHOR: John Stewart
 // FILENAME: Lab6.java
-// SPECIFICATION: your own description of the program.
+// SPECIFICATION: takes input for an array's items, then prints them out with its sum.
 // FOR: CS 1400 - Lab #6
-// TIME SPENT: how long it took you to complete the assignment.
+// TIME SPENT: 1 hr
 //-----------------------------------------------------------*/
 
 import java.util.Scanner;
@@ -73,7 +73,7 @@ public class Lab6
         // end with a newline character.
         // -->
     	
-    	System.out.print("\n" + sumArray(array) + "\n");
+    	System.out.print("\nThe sum of the array's elements is: " + sumArray(array) + "\n");
 
         //Close Scanner object 
         // -->
@@ -85,7 +85,7 @@ public class Lab6
     //DO NOT print out any message in this method 
     public static double sumArray(double[] arr)
     {
-    	int sum = 0;
+    	double sum = 0;
     	for (int i = 0; i < arr.length; i++) {
     		sum += arr[i];
     	}
