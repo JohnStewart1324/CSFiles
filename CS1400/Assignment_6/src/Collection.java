@@ -11,14 +11,15 @@ public class Collection {
 	
 	public boolean add(int number) {
 		
-		int newArray[] = new int[size*2];
+		
 		
 		if (search(number) != -1) {
 			return false;
 		}
 		if (count == size){
+			size *= 2;
+			int newArray[] = new int[size];
 			doubleArray();
-			System.out.println("length: " + numArray.length);
 			for (int j = 0; j < count; j++) {
 				newArray[j+1] = numArray[j];
 			}
@@ -27,6 +28,7 @@ public class Collection {
 			count++;
 			return true;
 		} else {
+			int newArray[] = new int[size];
 			for (int j = 0; j < count; j++) {
 				newArray[j+1] = numArray[j];
 			}
@@ -53,7 +55,7 @@ public class Collection {
 		
 	}
 	
-	public void doubleArray() {
+	private void doubleArray() {
 		size *= 2;
 		int newArr[] = new int[size];
 		for (int i = 0; i < numArray.length; i++) {
@@ -62,7 +64,7 @@ public class Collection {
 		numArray = newArr;
 	}
 	
-	public int search(int searchingNum) {
+	private int search(int searchingNum) {
 		for (int i = 0; i < size; i++) {
 			if (numArray[i] == searchingNum) {
 				return i;
@@ -93,10 +95,10 @@ public class Collection {
 	
 	public double computeAverage() {
 		double average = 0;
-		double length = numArray.length;
+		double length = size;
 		for (int i = 0; i < length; i++) {
 			average += numArray[i];
 		}
-		return average/numArray.length;
+		return average/length;
 	}
 }
