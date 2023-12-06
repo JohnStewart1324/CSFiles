@@ -39,14 +39,14 @@ public class Collection {
 		}
 	}
 
-	public boolean remove(int number) {
-		int newArr[] = new int[size];
-		
+	public boolean remove(int number) {		
 		for (int i = 0; i < numArray.length; i++) {
 			if (numArray[i] == number) {
-				for (int j = number; j < numArray.length - number; j++) {
-					newArr[j] = numArray[j+1];
+				for (int j = i; j < numArray.length-1; j++) {
+					numArray[j] = numArray[j+1];
 				}
+				numArray[numArray.length-1] = 0;
+				count--;
 				return true;
 			}
 		}
@@ -93,12 +93,28 @@ public class Collection {
 		return numPositives;
 	}
 	
+	public String toString() {
+		String str = "{";
+		for (int i = numArray.length-1; i >= 0; i--) {
+			if (numArray[i] != 0) {
+				str += numArray[i];
+				if (i > 0) {
+					str += ", ";
+				}
+			}
+		}
+		str += "}";
+		return str;
+	}
+	
 	public double computeAverage() {
 		double average = 0;
-		double length = size;
+		double total = 0;
+		double length = count;
 		for (int i = 0; i < length; i++) {
-			average += numArray[i];
+			total += numArray[i];
 		}
-		return average/length;
+		average = total/length;
+		return average;
 	}
 }

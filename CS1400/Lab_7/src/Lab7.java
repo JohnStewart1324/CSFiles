@@ -81,7 +81,7 @@ public class Lab7
                 // --> 
             	
             	int temp;
-            	if (array[i] > array[j]) {
+            	if (array[i] <= array[j]) {
             		temp = array[i];
             		array[i] = array[j];
             		array[j] = temp;
@@ -93,7 +93,15 @@ public class Lab7
         // ============================================================
         // Display the sorted array 
         // -->
-      
+        String str = "";
+        
+        for (int i = 0; i < array.length; i++) {
+        	str += array[i];
+        	if (i < array.length-1) {
+        		str += ", ";
+        	}
+        }
+        System.out.println("The array after sorting: \n" + str);
         
         // ============================================================
         // Remove the minimum in the sorted array
@@ -122,7 +130,14 @@ public class Lab7
         // ============================================================
         // Display the Array after removing the first element
         // -->
-        System.out.println("The array with the minimum removed: " + array.toString());
+        str = "";
+        for (int i = 0; i < array.length; i++) {
+        	str += array[i];
+        	if (i < array.length-1) {
+        		str += ", ";
+        	}
+        }
+        System.out.println("The array with the minimum removed: \n" + str + "\n");
         
         // ============================================================
         // Search for an element and remove it
@@ -170,7 +185,14 @@ public class Lab7
         // ============================================================
         // Display the final array
         // -->
-        System.out.println("The final array: " + array.toString());
+        str = "";
+        for (int i = 0; i < array.length; i++) {
+        	str += array[i];
+        	if (i < array.length-1) {
+        		str += ", ";
+        	}
+        }
+        System.out.println("The final array: \n" + str);
     
     }
 }

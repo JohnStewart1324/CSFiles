@@ -20,9 +20,5 @@ public class Cat extends Animal{
 	public void setNumWhiskers(int numWhiskers) {
 		this.numWhiskers = numWhiskers;
 	}
-	
-	public void setSpeed(double speed) {
-		this.speed = speed;
-	}
 
 }
