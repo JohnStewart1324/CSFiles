@@ -1,9 +1,9 @@
 /*-------------------------------------------------------------------------
-// AUTHOR: your name
+// AUTHOR: John Stewart
 // FILENAME: Lab8.java
-// SPECIFICATION:
+// SPECIFICATION: uses classes and subclasses to create a cat object with certain provided data
 // FOR: CS1400 - Lab #8
-// TIME SPENT: how long it took you to complete the assignment
+// TIME SPENT: <1hr
 //----------------------------------------------------------------------*/
 
 import java.util.Scanner;

@@ -53,6 +53,9 @@ public abstract class Animal {
 	}
 	
 	public double getSpeed() {
+		if (speed > 20) {
+			return speed+3;
+		}
 		return speed;
 	}
 	
