@@ -1,13 +1,11 @@
+package Test;
+public class test {
+	public static void main(String[] args) {
+		Name jill = new Name();
+		Name myFriend = jill.setName("Jill", "Greene");
 
-
-public Name setName(String firstName, String lastName) {
-	setFirst(firstName);
-	setLast(lastName);
-	
-	return this;
+		System.out.println(myFriend);
+	}
 }
 
-public static void main(String[] args) {
-	Name jill = new Name();
-	Name myFriend = jill.setName("Jill", "Greene");
-}
+
